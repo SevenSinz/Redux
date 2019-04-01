@@ -14,11 +14,7 @@ class Meme extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.log("this.props = ",this.props.meme.id)
-        console.log("nextProps = ",nextProps.meme.id)
         return this.props.meme.id !== nextProps.meme.id
-
-
     }
 
     render() {
