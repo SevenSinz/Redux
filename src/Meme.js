@@ -15,7 +15,7 @@ class Meme extends Component {
     return (
       <div className="Meme" onClick={ this.clickHandler }>
         <div> {this.props.meme.topTxt} </div>
-        <img src={this.props.meme.imgUrl} alt="sky lights"/>
+        <img src={this.props.meme.imgUrl} alt="Meme, don't pick on me!"/>
         <div> {this.props.meme.bottomTxt} </div> 
       </div>
     );

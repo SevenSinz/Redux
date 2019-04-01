@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import CreateMemeForm from './CreateMemeForm';
+import CreateMemeForm from './CreateMemeForm';
 import Meme from './Meme';
 
 // import './Memes.css'
@@ -10,8 +10,14 @@ class Memes extends Component {
     constructor(props){
         super(props)
         this.remove = this.remove.bind(this);
+        this.add = this.add.bind(this);
     }
 
+    add(memeObj){
+        this.props.dispatch({   type: 'ADD', 
+                                payload: memeObj
+                            })
+    }
     remove(id){
         this.props.dispatch({   type: 'REMOVE', 
                                 payload: id
@@ -25,7 +31,7 @@ class Memes extends Component {
                                                         />)
         return (
         <div className="Memes">
-        {/* <CreateMemeForm /> */}
+        <CreateMemeForm triggerAdd={this.add}/>
         {Memes} 
         </div>
         );
