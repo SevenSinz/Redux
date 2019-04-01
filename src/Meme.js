@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
+
 // import './Meme.css'
 
 class Meme extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.clickHandler = this.clickHandler.bind(this);
     }
 
-    clickHandler(){
+    clickHandler() {
         this.props.triggerRemove(this.props.meme.id)
     }
-  render() {
-    return (
-      <div className="Meme" onClick={ this.clickHandler }>
-        <div> {this.props.meme.topTxt} </div>
-        <img src={this.props.meme.imgUrl} alt="Meme, don't pick on me!"/>
-        <div> {this.props.meme.bottomTxt} </div> 
-      </div>
-    );
-  }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.log("this.props = ",this.props.meme.id)
+        console.log("nextProps = ",nextProps.meme.id)
+        return this.props.meme.id !== nextProps.meme.id
+
+
+    }
+
+    render() {
+        const {topTxt, imgUrl, bottomTxt} = this.props.meme;
+        return (
+            <div className="Meme" onClick={this.clickHandler}>
+                <div> { topTxt } </div>
+                <img src={ imgUrl } alt=''/>
+                <div> { bottomTxt } </div>
+            </div>
+        );
+    }
 }
 
 export default Meme
